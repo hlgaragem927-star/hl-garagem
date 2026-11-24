@@ -432,18 +432,6 @@
         toast('Configurações salvas.');
       } catch (ex) { fail(ex); } finally { save.disabled = false; }
     });
-    const heroFile = h('input', { type: 'file', accept: 'image/jpeg,image/png,image/webp', 'aria-label': 'Enviar foto principal do site' });
-    heroFile.addEventListener('change', async () => {
-      const f = heroFile.files[0];
-      if (!f) return;
-      if (f.size > 6 * 1024 * 1024) return toast('A foto passa de 6 MB. Reduza e tente de novo.', true);
-      try { await api('/api/admin/hero-image', { method: 'POST', body: f, headers: { 'Content-Type': 'application/octet-stream' } }); toast('Foto principal atualizada. Já aparece no site.'); go('settings'); } catch (ex) { fail(ex); }
-    });
-    const hero = h('div', { class: 'panel' }, h('h2', { text: 'Foto principal do site' }),
-      h('p', { class: 'hint', text: 'É a foto do carro que aparece no topo da página inicial. Use uma foto sua, na horizontal, de preferência de um carro seu depois do serviço (JPG, PNG ou WEBP, até 6 MB). Sem foto, o site mostra uma ilustração.' }),
-      S.hero_image ? h('img', { src: '/uploads/' + S.hero_image, alt: 'Foto principal atual', style: 'width:min(420px,100%);border-radius:12px;margin-top:12px;display:block' }) : null,
-      h('div', { class: 'row-actions', style: 'margin-top:14px' }, h('span', { class: 'btn btn-primary btn-sm file-btn' }, S.hero_image ? 'Trocar foto' : 'Enviar foto', heroFile),
-        S.hero_image ? h('button', { type: 'button', class: 'mini danger', text: 'Remover foto', onclick: async () => { try { await api('/api/admin/hero-image', { method: 'DELETE' }); toast('Foto removida.'); go('settings'); } catch (ex) { fail(ex); } } }) : null));
     const cur = h('input', { type: 'password', id: 'pw-cur', autocomplete: 'current-password' }), nxt = h('input', { type: 'password', id: 'pw-new', autocomplete: 'new-password', minlength: '10' });
     const pwBtn = h('button', { type: 'submit', class: 'btn btn-ghost btn-sm', text: 'Trocar senha' });
     const pw = h('form', { class: 'panel', style: 'display:grid;gap:14px;max-width:520px', novalidate: true }, h('h2', { text: 'Senha do administrador' }), field('Senha atual', cur), field('Nova senha (mínimo 10 caracteres)', nxt), pwBtn);
@@ -454,7 +442,7 @@
       backups.length ? h('ul', { class: 'bars', style: 'margin-top:12px' }, backups.slice(0, 8).map((b) => h('li', {}, h('div', { class: 'row' }, h('a', { href: '/api/admin/backups/' + encodeURIComponent(b.name), text: b.name }), h('span', { text: Math.max(1, Math.round(b.size / 1024)) + ' KB' }))))) : h('p', { class: 'hint', text: 'Nenhum backup ainda.' }));
     const lg = h('div', { class: 'panel' }, h('h2', { text: 'Registro de atividades' }), h('div', { class: 'table-wrap log' }, h('table', {}, h('thead', {}, h('tr', {}, ['Quando', 'Quem', 'O que', 'Detalhe', 'IP'].map((x) => h('th', { text: x })))),
       h('tbody', {}, log.map((l) => h('tr', {}, h('td', { text: dtBR(l.at) }), h('td', { text: l.admin }), h('td', { text: l.action.replace(/_/g, ' ') }), h('td', { text: l.detail }), h('td', { text: l.ip })))))));
-    v.append(form, hero, pw, bk, lg);
+    v.append(form, pw, bk, lg);
   };
 
   /* ---------- início ---------- */
