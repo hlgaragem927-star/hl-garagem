@@ -1,0 +1,16 @@
+{
+  "name": "hl-garagem",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site, agendamento online e painel administrativo da HL GARAGEM (estética automotiva).",
+  "main": "server.js",
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning server.js",
+    "test": "node --disable-warning=ExperimentalWarning --test tests/e2e.test.js",
+    "backup": "node --disable-warning=ExperimentalWarning scripts/backup.js",
+    "verify-backup": "node --disable-warning=ExperimentalWarning scripts/verify-backup.js"
+  },
+  "engines": {
+    "node": ">=22.13"
+  }
+}
