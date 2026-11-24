@@ -41,6 +41,7 @@ const DEFAULT_SETTINGS = {
 const PUBLIC_SETTINGS = ['hero_image', 'business_name', 'whatsapp', 'email', 'phone_display', 'address', 'instagram', 'open_days', 'open_time', 'close_time', 'max_advance_days'];
 
 const SEED_SERVICES = [
+  ['Lavagem simples', 'wash', 'Lavagem externa rápida com shampoo neutro, rodas e secagem, para manter o carro limpo no dia a dia.', 50, 60],
   ['Lavagem detalhada', 'wash', 'Limpeza completa da parte externa, rodas, vãos de portas e acabamento, com secagem cuidadosa para não riscar a pintura.', 150, 120],
   ['Polimento técnico', 'polish', 'Remoção de riscos leves e marcas de lavagem para devolver profundidade e brilho à pintura.', 600, 300],
   ['Vitrificação de pintura', 'ceramic', 'Camada cerâmica que repele água e sujeira e deixa a limpeza do dia a dia mais fácil.', 1200, 480],
@@ -223,8 +224,19 @@ function createApp(opts = {}) {
 
   /* seed de serviços */
   if (q('SELECT COUNT(*) AS n FROM services').get().n === 0) {
-    const ins = q('INSERT INTO services(slug, name, description, price_cents, duration_min, active, kind, sort) VALUES(?,?,?,?,?,1,?,?)');
-    SEED_SERVICES.forEach(([name, kind, desc, price, dur], i) => ins.run(slugify(name), name, desc, price * 100, dur, kind, i));
+    const ins = q('INSERT INTO services(slug, name, description, price_cents, duration_min, active, kind, before_image, after_image, sort) VALUES(?,?,?,?,?,1,?,?,?,?)');
+    SEED_SERVICES.forEach(([name, kind, desc, price, dur], i) => {
+      const slug = slugify(name);
+      // fotos reais de antes e depois que acompanham o projeto (public/img/servicos)
+      ins.run(slug, name, desc, price * 100, dur, kind, `/img/servicos/${slug}-antes.jpg`, `/img/servicos/${slug}-depois.jpg`, i);
+    });
+  }
+
+  /* bancos já existentes: garante a Lavagem simples (a partir de R$ 50), uma única vez */
+  if (!q("SELECT 1 FROM services WHERE slug = 'lavagem-simples'").get()) {
+    const [name, kind, desc, price, dur] = SEED_SERVICES[0];
+    q('INSERT INTO services(slug, name, description, price_cents, duration_min, active, kind, before_image, after_image, sort) VALUES(?,?,?,?,?,1,?,?,?,?)')
+      .run('lavagem-simples', name, desc, price * 100, dur, kind, '/img/servicos/lavagem-simples-antes.jpg', '/img/servicos/lavagem-simples-depois.jpg', -1);
   }
 
   /* limite de requisições (em memória) */
@@ -375,10 +387,11 @@ function createApp(opts = {}) {
     out.sort = Number.isInteger(b.sort) ? b.sort : current?.sort ?? 0;
     return out;
   }
+  const imageUrl = (v) => (!v ? null : v.startsWith('/img/') ? v : '/uploads/' + v);
   function publicService(r) {
     return {
       id: r.id, name: r.name, description: r.description, price_cents: r.price_cents, duration_min: r.duration_min, kind: r.kind,
-      before_image: r.before_image ? '/uploads/' + r.before_image : null, after_image: r.after_image ? '/uploads/' + r.after_image : null,
+      before_image: imageUrl(r.before_image), after_image: imageUrl(r.after_image),
     };
   }
   function adminService(r) { return { ...publicService(r), active: !!r.active, sort: r.sort }; }
@@ -419,7 +432,7 @@ function createApp(opts = {}) {
       const S = getSettings();
       const pub = {};
       for (const k of PUBLIC_SETTINGS) pub[k] = S[k];
-      pub.hero_image = S.hero_image ? '/uploads/' + S.hero_image : '';
+      pub.hero_image = S.hero_image ? '/uploads/' + S.hero_image : (fs.existsSync(path.join(ROOT, 'public', 'img', 'hero.jpg')) ? '/img/hero.jpg' : '');
       return send(res, 200, {
         settings: pub,
         services: q('SELECT * FROM services WHERE active = 1 ORDER BY sort, id').all().map(publicService),
@@ -453,7 +466,6 @@ function createApp(opts = {}) {
     if (p === '/api/bookings' && m === 'POST') {
       const b = await readJson(req);
       if (b.website) return send(res, 200, { ok: true }); // campo-isca para robôs
-      rlCheck('book:' + ip, 6, 3600e3);
       const S = getSettings();
       const svc = q('SELECT * FROM services WHERE id = ? AND active = 1').get(Number(b.service_id));
       if (!svc) throw new HttpError(400, 'Escolha um serviço.');
@@ -500,7 +512,6 @@ function createApp(opts = {}) {
     if (p === '/api/messages' && m === 'POST') {
       const b = await readJson(req);
       if (b.website) return send(res, 200, { ok: true });
-      rlCheck('msg:' + ip, 5, 3600e3);
       const name = clean(b.name, 80), text = clean(b.text, 1000);
       if (name.length < 2) throw new HttpError(400, 'Informe seu nome.');
       if (text.length < 5) throw new HttpError(400, 'Escreva sua mensagem.');
