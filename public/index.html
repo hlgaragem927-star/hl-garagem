@@ -1,0 +1,233 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>HL GARAGEM</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Syncopate:wght@400;700&display=swap">
+<link rel="stylesheet" href="site.css">
+
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<div id="preview-bar" class="preview-bar" hidden>Prévia sem servidor: os pedidos de agendamento e as mensagens abrem no WhatsApp.</div>
+
+<header class="top" id="top">
+  <div class="wrap top-row">
+    <a class="logo" href="#inicio" aria-label="HL GARAGEM, início">
+      <span class="logo-mark">HL</span><span class="logo-text">GARAGEM</span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Principal">
+      <a href="#servicos">Serviços</a>
+      <a href="#olhe-de-perto">Antes e depois</a>
+      <a href="#sobre">A garagem</a>
+      <a href="#contato">Contato</a>
+      <a class="nav-cta" href="#agendar">Agendar serviço</a>
+    </nav>
+    <a class="btn btn-primary btn-sm top-cta" href="#agendar">Agendar</a>
+    <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="nav" aria-label="Abrir menu"><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="conteudo">
+<section class="hero" id="inicio">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <h1>Seu carro merece outro nível.</h1>
+      <p class="lead">Detalhamento impecável para quem cuida do carro com atenção a cada detalhe: pintura, interior, faróis e proteção.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#agendar">Agendar serviço</a>
+        <a class="btn btn-ghost" id="hero-wa" href="https://wa.me/5511998654294" target="_blank" rel="noopener">Falar no WhatsApp</a>
+      </div>
+    </div>
+    <div class="hero-car">
+      <svg class="car" viewBox="20 72 960 290" role="img" aria-label="Cupê esportivo escuro com reflexos laranja sobre piso espelhado">
+        <defs>
+          <linearGradient id="g-body" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34343b"/><stop offset=".42" stop-color="#14141a"/><stop offset="1" stop-color="#060607"/></linearGradient>
+          <linearGradient id="g-rim" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ff6b1a" stop-opacity="0"/><stop offset=".22" stop-color="#ff8a3d"/><stop offset=".62" stop-color="#fff1e6"/><stop offset="1" stop-color="#ff6b1a" stop-opacity=".2"/></linearGradient>
+          <linearGradient id="g-glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2b2f3a"/><stop offset=".5" stop-color="#0b0c10"/><stop offset="1" stop-color="#1a1d26"/></linearGradient>
+          <linearGradient id="g-sweep" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#ffd9bd" stop-opacity=".5"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+          <radialGradient id="g-glow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ff6b1a" stop-opacity=".55"/><stop offset="1" stop-color="#ff6b1a" stop-opacity="0"/></radialGradient>
+          <linearGradient id="g-fade" gradientUnits="userSpaceOnUse" x1="0" y1="292" x2="0" y2="400"><stop offset="0" stop-color="#fff" stop-opacity=".5"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+          <mask id="m-refl"><rect x="0" y="292" width="1000" height="108" fill="url(#g-fade)"/></mask>
+          <clipPath id="c-body"><path d="M44 250C40 226 56 210 96 202L190 184C232 170 268 150 318 126C360 106 412 96 470 96C548 96 618 106 676 146C716 172 762 184 838 192C892 198 934 212 954 234C962 244 962 256 954 262L824 262A64 64 0 0 0 696 262L304 262A64 64 0 0 0 176 262L58 262C46 262 44 256 44 250Z"/></clipPath>
+          <g id="wheel">
+            <circle r="46" fill="#08080a"/>
+            <circle r="42" fill="none" stroke="#1d1d23" stroke-width="8"/>
+            <circle r="29" fill="#101014" stroke="url(#g-rim)" stroke-width="2.5"/>
+            <g stroke="#ff8a3d" stroke-opacity=".75" stroke-width="3.2" stroke-linecap="round">
+              <line x1="8" y1="0" x2="26" y2="0"/><line x1="8" y1="0" x2="26" y2="0" transform="rotate(72)"/><line x1="8" y1="0" x2="26" y2="0" transform="rotate(144)"/><line x1="8" y1="0" x2="26" y2="0" transform="rotate(216)"/><line x1="8" y1="0" x2="26" y2="0" transform="rotate(288)"/>
+            </g>
+            <circle r="6" fill="#1d1d23"/>
+          </g>
+          <g id="car-shape">
+            <path d="M44 250C40 226 56 210 96 202L190 184C232 170 268 150 318 126C360 106 412 96 470 96C548 96 618 106 676 146C716 172 762 184 838 192C892 198 934 212 954 234C962 244 962 256 954 262L824 262A64 64 0 0 0 696 262L304 262A64 64 0 0 0 176 262L58 262C46 262 44 256 44 250Z" fill="url(#g-body)"/>
+            <path d="M330 152C360 122 412 107 470 107C540 107 598 117 648 158Z" fill="url(#g-glass)"/>
+            <path d="M330 152C360 122 412 107 470 107" fill="none" stroke="#fff" stroke-opacity=".25" stroke-width="1.5"/>
+            <path d="M96 202L190 184C232 170 268 150 318 126C360 106 412 96 470 96C548 96 618 106 676 146C716 172 762 184 838 192C892 198 934 212 954 234" fill="none" stroke="url(#g-rim)" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M68 226C300 212 700 212 944 238" fill="none" stroke="#fff" stroke-opacity=".14" stroke-width="1.6"/>
+            <path d="M330 246L690 246" fill="none" stroke="#ff6b1a" stroke-opacity=".5" stroke-width="1.4"/>
+            <path d="M884 206C912 208 936 216 950 228L928 232C914 222 900 216 882 214Z" fill="#fff4e6"/>
+            <path d="M884 206C912 208 936 216 950 228" fill="none" stroke="#ff8a3d" stroke-opacity=".5" stroke-width="7" stroke-linecap="round"/>
+            <path d="M47 236L74 218" fill="none" stroke="#ff3d1a" stroke-width="4.5" stroke-linecap="round"/>
+            <use href="#wheel" x="240" y="246"/>
+            <use href="#wheel" x="760" y="246"/>
+            <g clip-path="url(#c-body)"><rect class="sweep" x="-260" y="70" width="170" height="240" fill="url(#g-sweep)"/></g>
+          </g>
+        </defs>
+        <ellipse cx="500" cy="296" rx="470" ry="20" fill="url(#g-glow)"/>
+        <g mask="url(#m-refl)"><g transform="translate(0 584) scale(1 -1)" opacity=".5"><use href="#car-shape"/></g></g>
+        <use href="#car-shape"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="servicos" aria-labelledby="t-servicos">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="t-servicos">Serviços</h2>
+      <p>Arraste o controle em cada cartão para ver a diferença entre antes e depois.</p>
+    </div>
+    <div class="cards" id="cards" aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="section section-alt" id="olhe-de-perto" aria-labelledby="t-perto">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="t-perto">Olhe de perto.</h2>
+      <p>Metade do carro como chegou, metade como sai. Escolha um serviço e compare.</p>
+    </div>
+    <div class="tabs" id="tabs" role="tablist" aria-label="Serviços"></div>
+    <div class="showcase" id="showcase"></div>
+    <p class="showcase-note" id="showcase-note"></p>
+  </div>
+</section>
+
+<section class="section" id="sobre" aria-labelledby="t-sobre">
+  <div class="wrap about">
+    <div>
+      <h2 id="t-sobre">Detalhamento impecável.</h2>
+      <p class="about-text">A HL GARAGEM cuida da estética do seu carro por dentro e por fora: da lavagem detalhada ao polimento, da vitrificação à restauração de faróis e à proteção da pintura. Você escolhe o serviço, o dia e o horário direto no site.</p>
+    </div>
+    <ol class="steps" aria-label="Como funciona">
+      <li><strong>Escolha o serviço</strong><span>Veja preço e duração de cada um e reserve o horário que ficar bom para você.</span></li>
+      <li><strong>Receba a confirmação</strong><span>A equipe confirma o agendamento e fala com você pelo WhatsApp.</span></li>
+      <li><strong>Deixe o carro</strong><span>Leve o veículo no dia e no horário marcados.</span></li>
+      <li><strong>Retire o resultado</strong><span>Chaves na mão, queixo no chão.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section section-alt" id="agendar" aria-labelledby="t-agendar">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="t-agendar">Agende seu horário</h2>
+      <p>Quatro passos rápidos. Horários já ocupados não aparecem.</p>
+    </div>
+    <div class="book" id="book">
+      <form class="book-form" id="book-form" novalidate>
+        <fieldset>
+          <legend><span class="num">1</span>Serviço</legend>
+          <div class="svc-pick" id="svc-pick" role="radiogroup" aria-label="Serviço"></div>
+        </fieldset>
+        <fieldset>
+          <legend><span class="num">2</span>Veículo</legend>
+          <div class="chips" id="vehicle-kinds" role="radiogroup" aria-label="Tipo de veículo"></div>
+          <div class="grid-2">
+            <label class="field"><span>Marca</span><input id="f-brand" name="vehicle_brand" list="brands" autocomplete="off" maxlength="40" placeholder="Ex.: Honda" required></label>
+            <label class="field"><span>Modelo</span><input id="f-model" name="vehicle_model" autocomplete="off" maxlength="40" placeholder="Ex.: Civic" required></label>
+          </div>
+          <datalist id="brands"></datalist>
+        </fieldset>
+        <fieldset>
+          <legend><span class="num">3</span>Data e horário</legend>
+          <label class="field field-date"><span>Dia</span><input type="date" id="f-date" name="date" required></label>
+          <p class="hint" id="slots-hint">Escolha o serviço e o dia para ver os horários livres.</p>
+          <div class="chips chips-time" id="slots" role="radiogroup" aria-label="Horário"></div>
+        </fieldset>
+        <fieldset>
+          <legend><span class="num">4</span>Seus dados</legend>
+          <div class="grid-2">
+            <label class="field"><span>Nome</span><input id="f-name" name="name" autocomplete="name" maxlength="80" required></label>
+            <label class="field"><span>Telefone</span><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="16" placeholder="(11) 99999-9999" required></label>
+          </div>
+          <label class="check"><input type="checkbox" id="f-same" checked><span>Meu WhatsApp é o mesmo número</span></label>
+          <label class="field" id="wa-wrap" hidden><span>WhatsApp</span><input id="f-wa" name="whatsapp" type="tel" inputmode="tel" maxlength="16" placeholder="(11) 99999-9999"></label>
+          <label class="field"><span>Observações (opcional)</span><textarea id="f-notes" name="notes" rows="2" maxlength="300" placeholder="Algo que a gente deva saber sobre o carro?"></textarea></label>
+          <label class="check"><input type="checkbox" id="f-consent"><span>Aceito que a HL GARAGEM use meus dados para atender este agendamento. <a href="privacidade.html" target="_blank" rel="noopener">Política de privacidade</a></span></label>
+          <input class="trap" type="text" id="f-trap" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        </fieldset>
+      </form>
+      <aside class="summary" id="summary" aria-live="polite">
+        <h3>Resumo</h3>
+        <dl>
+          <div><dt>Serviço</dt><dd id="s-service">Escolha um serviço</dd></div>
+          <div><dt>Veículo</dt><dd id="s-vehicle">Não informado</dd></div>
+          <div><dt>Quando</dt><dd id="s-when">Escolha dia e horário</dd></div>
+          <div><dt>Duração</dt><dd id="s-dur">-</dd></div>
+        </dl>
+        <div class="total"><span>Valor</span><strong id="s-price">-</strong></div>
+        <p class="hint">O valor final pode mudar se o carro precisar de cuidados além do serviço escolhido. A equipe avisa antes.</p>
+        <p class="form-error" id="book-error" role="alert" hidden></p>
+        <button class="btn btn-primary btn-block" id="book-submit" type="submit" form="book-form">Confirmar agendamento</button>
+      </aside>
+      <div class="success" id="success" hidden tabindex="-1">
+        <h3>Agendamento enviado</h3>
+        <p id="success-text"></p>
+        <div class="cta-row">
+          <a class="btn btn-primary" id="success-wa" href="#" target="_blank" rel="noopener">Confirmar pelo WhatsApp</a>
+          <button class="btn btn-ghost" id="success-again" type="button">Fazer outro agendamento</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="depoimentos" aria-labelledby="t-dep" hidden>
+  <div class="wrap">
+    <div class="sec-head"><h2 id="t-dep">Quem já passou por aqui</h2></div>
+    <div class="quotes" id="quotes"></div>
+  </div>
+</section>
+
+<section class="cta-band" aria-label="Chamada para agendar">
+  <div class="wrap cta-band-row">
+    <h2>Chaves na mão, queixo no chão.</h2>
+    <a class="btn btn-primary" href="#agendar">Agendar serviço</a>
+  </div>
+</section>
+
+<section class="section" id="contato" aria-labelledby="t-contato">
+  <div class="wrap contact">
+    <div>
+      <h2 id="t-contato">Contato</h2>
+      <ul class="contact-list" id="contact-list"></ul>
+      <a class="btn btn-primary" id="contact-wa" href="https://wa.me/5511998654294" target="_blank" rel="noopener">Chamar no WhatsApp</a>
+    </div>
+    <form class="msg-form" id="msg-form" novalidate>
+      <h3>Envie uma mensagem</h3>
+      <label class="field"><span>Nome</span><input id="m-name" maxlength="80" autocomplete="name" required></label>
+      <label class="field"><span>Telefone (opcional)</span><input id="m-phone" type="tel" inputmode="tel" maxlength="16" autocomplete="tel" placeholder="(11) 99999-9999"></label>
+      <label class="field"><span>Mensagem</span><textarea id="m-text" rows="4" maxlength="1000" required></textarea></label>
+      <label class="check"><input type="checkbox" id="m-consent"><span>Aceito que a HL GARAGEM use meus dados para responder. <a href="privacidade.html" target="_blank" rel="noopener">Política de privacidade</a></span></label>
+      <input class="trap" type="text" id="m-trap" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <p class="form-error" id="msg-error" role="alert" hidden></p>
+      <p class="form-ok" id="msg-ok" role="status" hidden></p>
+      <button class="btn btn-ghost" type="submit">Enviar mensagem</button>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-row">
+    <span class="foot-brand"><span class="logo-mark">HL</span> <span id="foot-name">HL GARAGEM</span></span>
+    <span class="foot-note" id="foot-year"></span>
+    <a href="privacidade.html">Política de privacidade</a>
+  </div>
+</footer>
+
+<a class="wa-float" id="wa-float" href="https://wa.me/5511998654294" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M16 3C9 3 3.4 8.6 3.4 15.5c0 2.3.6 4.4 1.7 6.3L3 29l7.4-2c1.8 1 3.800 1.500 5.600 1.500 7 0 12.600-5.600 12.600-12.500S23 3 16 3zm0 22.800c-1.800 0-3.500-.5-5-1.400l-.4-.2-4.400 1.200 1.200-4.300-.3-.4a10 10 0 0 1-1.500-5.200C5.600 10 10.300 5.500 16 5.500S26.400 10 26.400 15.500 21.700 25.800 16 25.800zm5.700-7.500c-.3-.2-1.900-.9-2.200-1s-.5-.2-.7.200-.8 1-1 1.200-.4.200-.7 0a8.400 8.400 0 0 1-4.200-3.700c-.3-.6.300-.5.900-1.700.1-.2 0-.4 0-.5l-1-2.300c-.3-.6-.5-.5-.7-.5h-.6a1.200 1.200 0 0 0-.9.400 3.700 3.700 0 0 0-1.100 2.700c0 1.600 1.100 3.200 1.300 3.400s2.300 3.600 5.600 5c2 .9 2.800 1 3.800.8.600-.1 1.900-.8 2.200-1.500.3-.8.300-1.400.2-1.500s-.3-.2-.6-.4z"/></svg>
+</a>
+
+<script src="art.js"></script>
+<script src="site.js"></script>
+
+</body></html>
