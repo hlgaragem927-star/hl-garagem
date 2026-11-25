@@ -239,6 +239,16 @@ function createApp(opts = {}) {
       .run('lavagem-simples', name, desc, price * 100, dur, kind, '/img/servicos/lavagem-simples-antes.jpg', '/img/servicos/lavagem-simples-depois.jpg', -1);
   }
 
+  /* bancos já existentes: completa as fotos de antes/depois de serviços antigos que ficaram sem foto (nunca sobrescreve foto enviada pelo painel) */
+  for (const row of q('SELECT id, slug FROM services WHERE before_image IS NULL AND after_image IS NULL').all()) {
+    const beforePath = path.join(publicDir, 'img', 'servicos', `${row.slug}-antes.jpg`);
+    const afterPath = path.join(publicDir, 'img', 'servicos', `${row.slug}-depois.jpg`);
+    if (fs.existsSync(beforePath) && fs.existsSync(afterPath)) {
+      q('UPDATE services SET before_image = ?, after_image = ? WHERE id = ?')
+        .run(`/img/servicos/${row.slug}-antes.jpg`, `/img/servicos/${row.slug}-depois.jpg`, row.id);
+    }
+  }
+
   /* limite de requisições (em memória) */
   const hits = new Map();
   const rlCount = (key, windowMs) => {
